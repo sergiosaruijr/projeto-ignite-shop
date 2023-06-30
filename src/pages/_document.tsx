@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-page-custom-font */
 import { getCssText } from '@/styles'
 import { Html, Head, Main, NextScript } from 'next/document'
 import React from 'react'

@@ -1,5 +1,7 @@
-import { relative } from 'path';
+// import { relative } from 'path';
 import { styled } from '..';
+import Link from 'next/link'
+
 
 export const HomeContainer = styled('main', {
   display: 'flex',
@@ -10,7 +12,7 @@ export const HomeContainer = styled('main', {
   minHeight: 656,
 })
 
-export const Product = styled('a', {
+export const Product = styled(Link, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -46,6 +48,7 @@ export const Product = styled('a', {
 
     strong: {
       fontSize: '$lg',
+      color: '$gray100',
     },
 
     span: {

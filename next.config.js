@@ -2,19 +2,18 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  
-}
 
-module.exports = nextConfig, {
   images: {
-    loader: 'custom',
-    loaderFile: './my/image/loader.js',
+    domains: [
+      'files.stripe.com',
+    ]
+  },
+
+  experimental: {
+    images: {
+      allowFutureImage: true,
+    },
   },
 }
 
-// module.exports = {
-//   images: {
-//     loader: 'custom',
-//     loaderFile: './my/image/loader.js',
-//   },
-// }
+module.exports = nextConfig
