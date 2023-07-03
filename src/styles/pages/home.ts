@@ -17,7 +17,7 @@ export const Product = styled(Link, {
   alignItems: 'center',
   justifyContent: 'center',
 
-  background: 'linear-gradient(180deg, #1ea438 0%, #7465d4 100%)',
+  background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
   // padding: '0.25rem',
   cursor: 'pointer',
