@@ -1,14 +1,16 @@
-import { HomeContainer, Product } from '@/styles/pages/home';
+import { ContainerIconBag, HomeContainer, Product } from '@/styles/pages/home';
 import Image from 'next/image';
-import React from 'react';
-import Head from 'next/head'
+import React, { useState } from 'react';
+import Head from 'next/head';
 
-import { useKeenSlider } from 'keen-slider/react'
+import { useKeenSlider } from 'keen-slider/react';
 
 import 'keen-slider/keen-slider.min.css';
 import { stripe } from '@/lib/stripe';
 import { GetServerSideProps, GetStaticProps } from 'next';
 import Stripe from 'stripe';
+
+import handBag from '../assests/handBagHome.svg';
 
 
 interface HomeProps {
@@ -21,6 +23,8 @@ interface HomeProps {
 }
 
 export default function Home({products}: HomeProps) {
+  const [productsBag, setProductsBag] = useState([])
+  
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3, 
@@ -28,10 +32,17 @@ export default function Home({products}: HomeProps) {
     }
   })
 
+  
+  // function addProductToBag(id: number) {
+  //   const copyProducts = [...productsBag]
+
+  //   const item = copyProducts.find((product)=> product.id === id)
+  // }
+
   return (
     <>
       <Head>
-        <title>Ignite Shop</title>
+        <title>Home | Ignite Shop</title>
       </Head>
 
       <HomeContainer ref={sliderRef} className='keen-slider'>
@@ -46,8 +57,13 @@ export default function Home({products}: HomeProps) {
               <Image src={product.imageUrl} width={520} height={480} alt=""/>
               
               <footer>
-                <strong>{product.name} </strong>
-                <span>{product.price}</span>
+                <div>
+                  <strong>{product.name} </strong>
+                  <span>{product.price}</span>
+                </div>
+                <ContainerIconBag>
+                  <Image src={handBag} alt="" />
+                </ContainerIconBag>  
               </footer>
             </Product>
           )

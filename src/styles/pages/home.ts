@@ -23,6 +23,11 @@ export const Product = styled(Link, {
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
+
+  div: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
   
   img: {
     objectFit: 'cover'
@@ -55,6 +60,7 @@ export const Product = styled(Link, {
       fontSize: '$xl',
       fontWeight:'bold',
       color: '$green300',
+      marginTop: '0.25rem',
     }
 
     
@@ -67,4 +73,11 @@ export const Product = styled(Link, {
     }
 
   }
+})
+
+export const ContainerIconBag = styled('div', {
+  backgroundColor: '$green500',
+  border: 0,
+  borderRadius: 6,
+  padding: '0.75rem',
 })

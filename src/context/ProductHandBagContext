@@ -1,0 +1,14 @@
+import { createContext, useContext } from 'react';
+
+const ProductHandBagContext = createContext({})
+
+export function useProductHandBag() {
+  return useContext(ProductHandBagContext)
+}
+
+export function ProductHandBagProvider({children}) {
+  return(
+    // <ProductHandBagContext.Provider value
+    null
+  )
+}
