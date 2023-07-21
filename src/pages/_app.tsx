@@ -21,15 +21,17 @@ function isNull(value: any) {
 export default function App({ Component, pageProps }: AppProps) {
 
   return(
-    <Container>
-      <Header>
-        <Image src={logoImg} alt="" />
-        <ContainerHandBag>
-          <Image src={handBag} alt="" />
-          <ContainerQuantity>{isNull('')}</ContainerQuantity>
-        </ContainerHandBag>
-      </Header>
-      <Component {...pageProps} />
-    </Container>
+    // <ProductHandBagProvider>
+      <Container>
+        <Header>
+          <Image src={logoImg} alt="" />
+          <ContainerHandBag>
+            <Image src={handBag} alt="" />
+            <ContainerQuantity>{isNull('')}</ContainerQuantity>
+          </ContainerHandBag>
+        </Header>
+        <Component {...pageProps} />
+      </Container>
+    // </ProductHandBagProvider>
   ) 
 }
