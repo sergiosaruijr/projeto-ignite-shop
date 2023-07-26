@@ -17,6 +17,14 @@ interface ProductHandBagChildrenProps{
   children: ProductHandBagProps
 }
 
+const Increase = () => {
+
+}
+
+const Decrease = () => {
+  
+}
+
 export const ProductHandBagProvider = ({children}: ProductHandBagChildrenProps) => {
   return(
     <ProductHandBagContext.Provider value ={{}}>
