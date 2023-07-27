@@ -1,10 +1,10 @@
 import { globalStyles } from '@/styles/global';
 import type { AppProps } from 'next/app';
-import React from 'react';
+import React, { useState } from 'react';
 
 import logoImg from '../assests/logo.svg';
 import handBag from '../assests/handBagHeader.svg'
-import { Container, ContainerHandBag, ContainerQuantity, Header } from '@/styles/pages/app';
+import { Container, ContainerHandBag, ContainerQuantity, Header, MenuSideBar } from '@/styles/pages/app';
 
 import Image from 'next/image';
 
@@ -18,15 +18,19 @@ function isNull(value: any) {
   }
 }
 
-export default function App({ Component, pageProps }: AppProps) {
 
+export default function App({ Component, pageProps }: AppProps) {
+  const [sidebar, setSideBar] = useState(false)
+  const showSideBar = () => setSideBar(!sidebar)
   return(
     // <ProductHandBagProvider>
       <Container>
         <Header>
           <Image src={logoImg} alt="" />
           <ContainerHandBag>
-            <Image src={handBag} alt="" />
+            <MenuSideBar onClick={showSideBar}>
+              <Image src={handBag} alt="" />
+            </MenuSideBar>
             <ContainerQuantity>{isNull('')}</ContainerQuantity>
           </ContainerHandBag>
         </Header>

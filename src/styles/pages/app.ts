@@ -40,3 +40,10 @@ export const ContainerQuantity = styled('div', {
   marginTop: -8,
   marginRight: -5,
 })
+
+export const MenuSideBar = styled('span', {
+  display: 'flex',
+  alignItems: 'center',
+  width: '100%',
+  color: '$green300',
+})
