@@ -41,9 +41,17 @@ export const ContainerQuantity = styled('div', {
   marginRight: -5,
 })
 
-export const MenuSideBar = styled('span', {
-  display: 'flex',
-  alignItems: 'center',
-  width: '100%',
-  color: '$green300',
+export const MenuSideBar = styled('button', {
+  // transform: CSSTranslate(x:0, ,),
+  // translate:
+  height: '100%',
+  position: 'fixed',
+  right: 0,
+  width: '250px',
+  // 
+  border: 'none',
+  transition: 'transform 250ms ease-in-out',
+  background: 'linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);'
+
+  
 })

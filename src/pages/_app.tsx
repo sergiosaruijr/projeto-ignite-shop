@@ -20,15 +20,15 @@ function isNull(value: any) {
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  const [sidebar, setSideBar] = useState(false)
-  const showSideBar = () => setSideBar(!sidebar)
+  // const [sidebar, setSideBar] = useState(false)
+  // const showSideBar = () => setSideBar(!sidebar)
   return(
     // <ProductHandBagProvider>
       <Container>
         <Header>
           <Image src={logoImg} alt="" />
           <ContainerHandBag>
-            <MenuSideBar onClick={showSideBar}>
+            <MenuSideBar>
               <Image src={handBag} alt="" />
             </MenuSideBar>
             <ContainerQuantity>{isNull('')}</ContainerQuantity>
