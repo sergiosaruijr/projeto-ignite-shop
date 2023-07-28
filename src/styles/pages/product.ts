@@ -73,14 +73,18 @@ export const ProductDetails = styled('div', {
 
 })
 
-export const MenuSideBar = styled('button', {
-  // transform: CSSTranslate(x:0, ,),
-  // translate:
-  height: '100%',
-  position: 'fixed',
-  right: 0,
-  width: '250px',
-  backgroundColor: '$green300',
-  // marginTop: '',
-  transition: 'transform 250ms ease-in-out',
-})
+// export const MenuSideBar = styled('div', {
+//   // transform: CSSTranslate(x:0, ,),
+//   // translate:
+//   height: '100%',
+//   position: 'fixed',
+//   right: 0,
+//   width: '250px',
+//   backgroundColor: '$green300',
+//   transform: 'translateX(250px)',
+//   transition: 'transform 250ms ease-in-out',
+// })
+
+// export const OpenSideBar = styled('input', {
+//   transform: 'translateX(0)',
+// })

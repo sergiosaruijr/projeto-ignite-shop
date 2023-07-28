@@ -1,3 +1,4 @@
+import { type } from 'os';
 import { styled } from '..';
 
 export const Container = styled('div', {
@@ -25,6 +26,7 @@ export const ContainerHandBag = styled('div', {
   borderRadius: 6,
   padding: '0.75rem',
   position: 'relative',
+
 })
 
 export const ContainerQuantity = styled('div', {
@@ -41,17 +43,25 @@ export const ContainerQuantity = styled('div', {
   marginRight: -5,
 })
 
-export const MenuSideBar = styled('button', {
-  // transform: CSSTranslate(x:0, ,),
-  // translate:
+export const MenuSideBar = styled('div', {
   height: '100%',
   position: 'fixed',
   right: 0,
-  width: '250px',
-  // 
+  width: '480px',
   border: 'none',
+  transform: 'translateX(480px)',
   transition: 'transform 250ms ease-in-out',
   background: 'linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);'
-
-  
 })
+
+export const OpenSideBar = styled('input', {
+  cursor: 'pointer',
+  display: 'none',
+  boxSizing: 'border-box',
+  transition: 'all 0.3s',
+
+  '&:checked ~ #sideBarMenu': {
+    transform: 'translateX(0)',
+  },
+})
+

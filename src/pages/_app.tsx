@@ -4,7 +4,14 @@ import React, { useState } from 'react';
 
 import logoImg from '../assests/logo.svg';
 import handBag from '../assests/handBagHeader.svg'
-import { Container, ContainerHandBag, ContainerQuantity, Header, MenuSideBar } from '@/styles/pages/app';
+import { 
+  Container, 
+  ContainerHandBag, 
+  ContainerQuantity, 
+  Header, 
+  MenuSideBar, 
+  OpenSideBar, } 
+from '@/styles/pages/app';
 
 import Image from 'next/image';
 
@@ -28,9 +35,14 @@ export default function App({ Component, pageProps }: AppProps) {
         <Header>
           <Image src={logoImg} alt="" />
           <ContainerHandBag>
-            <MenuSideBar>
+            <label>
+              <OpenSideBar type='checkbox'/>
               <Image src={handBag} alt="" />
-            </MenuSideBar>
+              <MenuSideBar id='sideBarMenu'>
+             
+              </MenuSideBar>
+            </label>
+              
             <ContainerQuantity>{isNull('')}</ContainerQuantity>
           </ContainerHandBag>
         </Header>
