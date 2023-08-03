@@ -81,3 +81,11 @@ export const ContainerIconBag = styled('div', {
   borderRadius: 6,
   padding: '0.75rem',
 })
+
+export const SkeletonFooter = styled('section', {
+  display: 'flex',
+  justifyContent: 'space-between',
+  // background: '$green300',
+  width: 600,
+  // height: 500,
+})

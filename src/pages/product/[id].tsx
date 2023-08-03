@@ -5,8 +5,11 @@ import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 import React, { useState } from 'react'
 import Stripe from 'stripe'
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 interface ProductProps {
   product: {
@@ -19,8 +22,25 @@ interface ProductProps {
   }
 }
 
+const SkeletonComponent = () => (
+  <SkeletonTheme highlightColor="#d5d4d4" baseColor='#fff'>
+    <section>
+      <Skeleton height={500} width={500} />
+    </section>
+  </SkeletonTheme>
+);
+
 export default function Product({product}: ProductProps) {
   const [isCreatinCheckoutSession , setIsCreatinCheckoutSession] = useState(false)
+
+  const router = useRouter()
+
+  if( router.isFallback ) {
+    return(
+      <h1>Loading...</h1>
+    )
+  }
+  // return  SkeletonComponent()
 
   async function handleBuyProduct(){
     try{
@@ -61,6 +81,10 @@ export default function Product({product}: ProductProps) {
           <button disabled={isCreatinCheckoutSession} onClick={handleBuyProduct}>
             Comprar agora
           </button>
+
+          {/* <button>
+            Comprar agora
+          </button> */}
         </ProductDetails>
       </ProductContainer>
     </>
@@ -72,7 +96,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: [
       {params: {id: 'prod_OA1aIkyoL4tet5'}}
     ],
-    fallback: 'blocking',
+    // fallback: 'blocking',
+    fallback: true,
   }
 }
 

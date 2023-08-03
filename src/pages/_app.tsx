@@ -27,10 +27,8 @@ function isNull(value: any) {
 
 
 export default function App({ Component, pageProps }: AppProps) {
-  // const [sidebar, setSideBar] = useState(false)
-  // const showSideBar = () => setSideBar(!sidebar)
+
   return(
-    // <ProductHandBagProvider>
       <Container>
         <Header>
           <Image src={logoImg} alt="" />
@@ -39,15 +37,13 @@ export default function App({ Component, pageProps }: AppProps) {
               <OpenSideBar type='checkbox'/>
               <Image src={handBag} alt="" />
               <MenuSideBar id='sideBarMenu'>
-             
+
               </MenuSideBar>
             </label>
-              
             <ContainerQuantity>{isNull('')}</ContainerQuantity>
           </ContainerHandBag>
         </Header>
         <Component {...pageProps} />
       </Container>
-    // </ProductHandBagProvider>
   ) 
 }

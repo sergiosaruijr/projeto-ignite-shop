@@ -8,6 +8,7 @@ import Stripe from 'stripe';
 
 interface SuccessProps {
   customerName: string;
+  // quantity: string;
   product: {
     name: string;
     imageUrl: string;
@@ -34,6 +35,7 @@ export default function Success({customerName, product}: SuccessProps) {
           Uhuul <strong>{customerName}</strong>, 
           sua <strong>{product.name} </strong> 
           já está a caminho da sua casa. 
+          {/* Comprou <strong>{quantity}</strong> */}
         </p>
 
         <Link href='/'>
@@ -61,6 +63,7 @@ export const getServerSideProps: GetServerSideProps = async ({query}) => {
   })
 
   const customerName = session.customer_details!.name;
+  // const quantity = session.line_items;
   const product = session.line_items?.data[0].price!.product as Stripe.Product
 
   console.log(session.line_items?.data)

@@ -1,4 +1,4 @@
-import { ContainerIconBag, HomeContainer, Product } from '@/styles/pages/home';
+import { ContainerIconBag, HomeContainer, Product, SkeletonFooter } from '@/styles/pages/home';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import Head from 'next/head';
@@ -7,10 +7,12 @@ import { useKeenSlider } from 'keen-slider/react';
 
 import 'keen-slider/keen-slider.min.css';
 import { stripe } from '@/lib/stripe';
-import { GetServerSideProps, GetStaticProps } from 'next';
+import { GetServerSideProps, GetStaticPaths, GetStaticProps } from 'next';
 import Stripe from 'stripe';
 
 import handBag from '../assests/handBagHome.svg';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import 'react-loading-skeleton/dist/skeleton.css'
 
 
 interface HomeProps {
@@ -22,8 +24,22 @@ interface HomeProps {
   }[]
 }
 
+const SkeletonComponent = () => (
+  <SkeletonTheme highlightColor="#d5d4d4" baseColor='#fff'>
+    <section>
+      <Skeleton height={696} width={600} />
+      <SkeletonFooter>
+        <Skeleton width={270}/>
+        <Skeleton width={120}/>
+      </SkeletonFooter>
+    </section>
+  </SkeletonTheme>
+);
+
 export default function Home({products}: HomeProps) {
   const [productsBag, setProductsBag] = useState([])
+
+  const [loading, setLoading] = useState(true);
   
   const [sliderRef] = useKeenSlider({
     slides: {
@@ -32,6 +48,15 @@ export default function Home({products}: HomeProps) {
     }
   })
 
+  // if(loading){
+  //   setTimeout(() => {
+  //     SkeletonComponent()
+  //     setLoading(false)
+  //   }, 5000)
+  // }
+  
+
+  const teste = [products.length]
   
   // function addProductToBag(id: number) {
   //   const copyProducts = [...productsBag]
@@ -44,28 +69,31 @@ export default function Home({products}: HomeProps) {
       <Head>
         <title>Home | Ignite Shop</title>
       </Head>
-
       <HomeContainer ref={sliderRef} className='keen-slider'>
+
         {products.map(product => {
           return(
-            <Product 
-              className='keen-slider__slide' 
-              href={`/product/${product.id}`} 
-              key={product.id} 
-              // prefetch={false}
+            <>
+              <p>
+                {teste}
+              </p>
+            <Product
+              className='keen-slider__slide'
+              href={`/product/${product.id}`}
+              key={product.id}
             >
-              <Image src={product.imageUrl} width={520} height={480} alt=""/>
-              
-              <footer>
-                <div>
-                  <strong>{product.name} </strong>
-                  <span>{product.price}</span>
-                </div>
-                <ContainerIconBag>
-                  <Image src={handBag} alt="" />
-                </ContainerIconBag>  
-              </footer>
-            </Product>
+                <Image src={product.imageUrl} width={520} height={480} alt="" />
+
+                <footer>
+                  <div>
+                    <strong>{product.name} </strong>
+                    <span>{product.price}</span>
+                  </div>
+                  <ContainerIconBag>
+                    <Image src={handBag} alt="" />
+                  </ContainerIconBag>
+                </footer>
+              </Product></>
           )
         })}
       </HomeContainer>
