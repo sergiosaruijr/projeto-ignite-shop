@@ -25,16 +25,17 @@ interface HomeProps {
 }
 
 const SkeletonComponent = () => (
-  <SkeletonTheme highlightColor="#d5d4d4" baseColor='#fff'>
+  <SkeletonTheme highlightColor="#262629" baseColor='#202024'>
     <section>
-      <Skeleton height={696} width={600} />
+      <Skeleton height={696} width={600} borderRadius={8} />
       <SkeletonFooter>
-        <Skeleton width={270}/>
-        <Skeleton width={120}/>
+        <Skeleton width={270} height={32} borderRadius={8}/>
+        <Skeleton width={120} height={32} borderRadius={8}/>
       </SkeletonFooter>
     </section>
   </SkeletonTheme>
 );
+
 
 export default function Home({products}: HomeProps) {
   const [productsBag, setProductsBag] = useState([])
@@ -55,8 +56,29 @@ export default function Home({products}: HomeProps) {
   //   }, 5000)
   // }
   
+  // inserir array que tenha de 0 a x e coloque skeleton ate x momento
+  const tamanho = products.length
+  const array: number[] = []
+  let i = 0
 
-  const teste = [products.length]
+  function createSkeleton() {
+    for( i ; i < tamanho; i++){
+      return SkeletonComponent()
+    }
+  }
+
+  function timerTeste() {
+    const timer = setTimeout(() => {{
+      setLoading(false)
+    }},3000)
+
+    return () => clearTimeout(timer)
+  }
+
+  // const timer = setTimeout(() => {{
+  //   setLoading(false)
+  // }},3000)
+
   
   // function addProductToBag(id: number) {
   //   const copyProducts = [...productsBag]
@@ -72,11 +94,21 @@ export default function Home({products}: HomeProps) {
       <HomeContainer ref={sliderRef} className='keen-slider'>
 
         {products.map(product => {
+          
           return(
             <>
-              <p>
-                {teste}
-              </p>
+              {/* {timerTeste()} */}
+              {loading && createSkeleton()}
+
+             
+              {/* <p>
+                {[...Array(tamanho)].map((_,index) => (
+                  <div key={index}>
+                    {SkeletonComponent()}
+                  </div>
+                ))}
+              </p> */}
+            {!loading && 
             <Product
               className='keen-slider__slide'
               href={`/product/${product.id}`}
@@ -93,7 +125,10 @@ export default function Home({products}: HomeProps) {
                     <Image src={handBag} alt="" />
                   </ContainerIconBag>
                 </footer>
-              </Product></>
+              </Product>
+            
+            } 
+            </>
           )
         })}
       </HomeContainer>
