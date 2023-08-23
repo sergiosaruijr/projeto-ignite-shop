@@ -14,6 +14,7 @@ import {
 from '@/styles/pages/app';
 
 import Image from 'next/image';
+import { SideBar } from '@/components/sidebar';
 
 globalStyles()
 
@@ -36,9 +37,10 @@ export default function App({ Component, pageProps }: AppProps) {
             <label>
               <OpenSideBar type='checkbox'/>
               <Image src={handBag} alt="" />
-              <MenuSideBar id='sideBarMenu'>
-
-              </MenuSideBar>
+              {/* <MenuSideBar id='sideBarMenu'>
+                
+              </MenuSideBar> */}
+              <SideBar/>
             </label>
             <ContainerQuantity>{isNull('')}</ContainerQuantity>
           </ContainerHandBag>
