@@ -8,41 +8,41 @@ export const MenuSideBar = styled('div', {
   border: 'none',
   transform: 'translateX(480px)',
   transition: 'transform 250ms ease-in-out',
-  background: '$gray800'
+  background: '$gray800',
+
 })
 
 export const ContainerContent = styled('div',{
   display: 'flex',
   flexDirection: 'column',
   margin: '1.5rem 3rem 3rem',
-
-  'strong:first-child': {
-    marginBottom:'1.5rem',
-    marginTop: '1.5rem',
+  
+  strong: {
+    fontSize: 20,
   }
 })
 
-export const CloseSideBar = styled('input', {
-  cursor: 'pointer',
-  display: 'none',
-  boxSizing: 'border-box',
-  transition: 'all 0.3s',
+export const ContainerCloseSideBar = styled('div', {
+  display: 'flex',
+  paddingBottom: '1.5rem',
 
-  '&:checked ~ #sideBarMenu': {
-    transform: 'translateX(0)',
-  },
+  input: {
+    cursor: 'pointer',
+    display: 'none',
+    boxSizing: 'border-box',
+    transition: 'all 0.3s',
+
+    '&:checked ~ #sideBarMenu': {
+      transform: 'translateX(0)',
+    },
+  }
 })
 
-// export const ContainerHandBag = styled('div', {
-  
-// })
-
-
 export const ContainerCardItem = styled('div', {
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  display: 'flex',
   background: '$green300',
   marginBottom: '1.5rem',
+  marginTop: '1.5rem',
 })
 
 export const ContainerImg = styled('div', {
@@ -58,16 +58,15 @@ export const ContainerImg = styled('div', {
 
 export const DataItens = styled('div', {
   display: 'flex',
-  background: '$gray300',
   flexDirection: 'column',
-  
-  p :{
-    marginBottom: 2,
-  },
+  marginLeft: '1.25rem',
+  marginTop: '0.2rem',
+  gap: '0.6rem',
+  fontSize: 18,
 
-  strong : {
-    marginBottom: 8,
-  }
+  span: {
+    fontSize: 16,
+  },
 })
 
 export const ContainerValues = styled('div', {
@@ -77,16 +76,30 @@ export const ContainerValues = styled('div', {
   background: '$green300',
   marginTop: '10.75rem',
   alignItems: 'center',
+
+  'p:nth-child(2)' : {
+    gridColumnEnd: 5,
+  },
+
+  'strong:nth-child(4)' : {
+    gridColumnEnd: 5,
+  },
+
 })
 
-
-
-
 export const ButtonBuy = styled('button', {
-  background: '$green300',
+  background: '$green500',
   color: '$gray100',
   marginTop: '3.4rem',
-  padding: '1.25rem 7.8rem',
+  padding: '1.25rem 7.7rem',
   border: 0,
   borderRadius: 8,
+
+  strong: {
+    fontSize: 18,
+  },
+
+  '&:hover': {
+    background: '$green300',
+  }
 })

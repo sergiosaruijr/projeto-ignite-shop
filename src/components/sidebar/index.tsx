@@ -1,7 +1,7 @@
 import { 
   ButtonBuy, 
-  CloseSideBar, 
   ContainerCardItem, 
+  ContainerCloseSideBar, 
   ContainerContent, 
   ContainerImg, 
   ContainerValues, 
@@ -17,8 +17,10 @@ export function SideBar() {
   return(
     <MenuSideBar id='sideBarMenu'> 
       <ContainerContent>
-        <CloseSideBar type='checkbox'/>
+        <ContainerCloseSideBar>
+          <input type='checkbox'/>
           x
+        </ContainerCloseSideBar>
         <strong>Sacola de Compras</strong>
         <ContainerCardItem>
           <ContainerImg>
