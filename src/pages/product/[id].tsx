@@ -6,10 +6,11 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import Stripe from 'stripe'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import HandBagContext from '@/context/ProductHandBagContext'
 
 interface ProductProps {
   product: {
@@ -34,6 +35,8 @@ export default function Product({product}: ProductProps) {
   const [isCreatinCheckoutSession , setIsCreatinCheckoutSession] = useState(false)
 
   const router = useRouter()
+
+  const {add} = useContext(HandBagContext)
 
   if( router.isFallback ) {
     return(
@@ -61,6 +64,8 @@ export default function Product({product}: ProductProps) {
     }
   }
 
+  
+
   return(
     <>
       <Head>
@@ -78,7 +83,14 @@ export default function Product({product}: ProductProps) {
 
           <p>{product.description}</p>
 
-          <button disabled={isCreatinCheckoutSession} onClick={handleBuyProduct}>
+          {/* envia para o stripe: */}
+          {/* <button disabled={isCreatinCheckoutSession} onClick={handleBuyProduct}>
+            Comprar agora
+          </button> */}
+
+          <button 
+            disabled={isCreatinCheckoutSession} 
+            onClick={handleBuyProduct}>
             Comprar agora
           </button>
 

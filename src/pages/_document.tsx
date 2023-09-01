@@ -16,6 +16,7 @@ export default function Document() {
       <style id='stitches' dangerouslySetInnerHTML={{__html: getCssText()}} />
 
       <script src="https://unpkg.com/phosphor-icons"></script>
+      <script src='lodash.js'></script>
       </Head>
       <body>
         <Main />
