@@ -6,7 +6,7 @@ import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
-import React, { useContext, useState } from 'react'
+import React, { ReactNode, useContext, useState } from 'react'
 import Stripe from 'stripe'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -14,12 +14,13 @@ import HandBagContext from '@/context/ProductHandBagContext'
 
 interface ProductProps {
   product: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: string;
-    description: string;
-    defaultPriceId: string;
+    id?: string;
+    name?: string;
+    imageUrl?: string;
+    price?: string | number;
+    // price: Stripe.Price | ReactNode;
+    description?: string;
+    defaultPriceId?: string;
   }
 }
 
@@ -34,9 +35,21 @@ const SkeletonComponent = () => (
 export default function Product({product}: ProductProps) {
   const [isCreatinCheckoutSession , setIsCreatinCheckoutSession] = useState(false)
 
-  const router = useRouter()
-
   const {add} = useContext(HandBagContext)
+
+  const addToHandBag = (product.) => {
+    if(add) {
+      add(product)
+    }
+  }
+
+  // const addToHandBag = (p: Stripe.Price) => {
+  //   if(add) {
+  //     add(p)
+  //   }
+  // }
+
+  const router = useRouter()
 
   if( router.isFallback ) {
     return(
@@ -88,15 +101,13 @@ export default function Product({product}: ProductProps) {
             Comprar agora
           </button> */}
 
+          {/* arrumar addHandBag */}
           <button 
             disabled={isCreatinCheckoutSession} 
-            onClick={handleBuyProduct}>
+            onClick={() => addToHandBag(product.price)}>
             Comprar agora
           </button>
 
-          {/* <button>
-            Comprar agora
-          </button> */}
         </ProductDetails>
       </ProductContainer>
     </>

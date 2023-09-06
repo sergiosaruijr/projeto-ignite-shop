@@ -2,10 +2,22 @@ import { createContext } from 'react'
 import Stripe from 'stripe'
 
 
+export interface ProductProps {
+  product: {
+    id: string;
+    name: string;
+    imageUrl: string;
+    price: string;
+    description: string;
+    defaultPriceId: string;
+  }
+}
+
 export type HandBagContextProps = {
   items?: Stripe.Price[],
   remove?: (priceID: string) => void
-  add?: (product: Stripe.Price) => void
+  add?: (product: ProductProps) => void
+  // add?: (product: Stripe.Price) => void
 }
 
 const handBagContextProps: HandBagContextProps = {}
