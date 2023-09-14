@@ -40,7 +40,6 @@ export const Product = styled(Link, {
     right: '0.25rem',
     padding: '2rem',
 
-    borderRadius: 6,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -61,8 +60,13 @@ export const Product = styled(Link, {
       fontWeight:'bold',
       color: '$green300',
       marginTop: '0.25rem',
-    }
+    },
 
+    button: {
+      border: 0,
+      borderRadius: 6,
+      color: '$green300',
+    }
     
   },
 

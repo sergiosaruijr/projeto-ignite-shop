@@ -10,16 +10,17 @@ import React, { ReactNode, useContext, useState } from 'react'
 import Stripe from 'stripe'
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
-import HandBagContext from '@/context/ProductHandBagContext'
+import { HandBagContext } from '@/context/HandBagContext'
+// import HandBagContext from '@/context/ProductHandBagContext'
 
 interface ProductProps {
   product: {
-    id?: string;
-    name?: string;
-    imageUrl?: string;
-    price?: string | number;
+    id: string;
+    name: string;
+    imageUrl: string;
+    price: string;
     // price: Stripe.Price | ReactNode;
-    description?: string;
+    description: string;
     defaultPriceId?: string;
   }
 }
@@ -35,13 +36,18 @@ const SkeletonComponent = () => (
 export default function Product({product}: ProductProps) {
   const [isCreatinCheckoutSession , setIsCreatinCheckoutSession] = useState(false)
 
-  const {add} = useContext(HandBagContext)
+  // const {add} = useContext(HandBagContext)
 
-  const addToHandBag = (product.) => {
-    if(add) {
-      add(product)
-    }
-  }
+  // function addToHandBag({product}: ProductProps){
+  //   if(add) {
+  //     add(product.price)
+  //   }
+  // }
+  // const addToHandBag = (product: ProductProps) => {
+  //   if(add) {
+  //     add(product)
+  //   }
+  // }
 
   // const addToHandBag = (p: Stripe.Price) => {
   //   if(add) {
@@ -102,11 +108,11 @@ export default function Product({product}: ProductProps) {
           </button> */}
 
           {/* arrumar addHandBag */}
-          <button 
+          {/* <button 
             disabled={isCreatinCheckoutSession} 
             onClick={() => addToHandBag(product.price)}>
             Comprar agora
-          </button>
+          </button> */}
 
         </ProductDetails>
       </ProductContainer>

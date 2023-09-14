@@ -1,6 +1,6 @@
 import { ContainerIconBag, HomeContainer, Product, SkeletonFooter } from '@/styles/pages/home';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { MouseEvent, useState } from 'react';
 import Head from 'next/head';
 
 import { useKeenSlider } from 'keen-slider/react';
@@ -13,15 +13,13 @@ import Stripe from 'stripe';
 import handBag from '../assests/handBagHome.svg';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
+import { useHandBag } from '@/hooks/useHandBag';
+import { ProductProps } from '@/context/HandBagContext';
+
 
 
 interface HomeProps {
-  products: {
-    id: string;
-    name: string;
-    imageUrl: string;
-    price: string;
-  }[]
+  products: ProductProps[];
 }
 
 const SkeletonComponent = () => (
@@ -48,6 +46,13 @@ export default function Home({products}: HomeProps) {
       spacing: 48,
     }
   })
+
+  const { addToHandBag} = useHandBag()
+
+  function handleAddToHandBag(e: MouseEvent<HTMLButtonElement>, product: ProductProps){
+    e.preventDefault();
+    addToHandBag(product)
+  }
 
   // if(loading){
   //   setTimeout(() => {
@@ -121,9 +126,11 @@ export default function Home({products}: HomeProps) {
                     <strong>{product.name} </strong>
                     <span>{product.price}</span>
                   </div>
-                  <ContainerIconBag>
-                    <Image src={handBag} alt="" />
-                  </ContainerIconBag>
+                  <button onClick={(e) => handleAddToHandBag(e, product)}>
+                    <ContainerIconBag>
+                      <Image src={handBag} alt="" />
+                    </ContainerIconBag>
+                  </button>
                 </footer>
               </Product>
             

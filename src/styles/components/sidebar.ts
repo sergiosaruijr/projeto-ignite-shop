@@ -67,6 +67,10 @@ export const DataItens = styled('div', {
   span: {
     fontSize: 16,
   },
+
+  button: {
+    fontSize: 16,
+  },
 })
 
 export const ContainerValues = styled('div', {
