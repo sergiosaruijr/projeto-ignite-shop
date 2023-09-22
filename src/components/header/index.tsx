@@ -1,16 +1,11 @@
+/* eslint-disable @next/next/link-passhref */
 /* eslint-disable react/jsx-no-undef */
-import { 
-  ContainerHandBag, 
-  ContainerQuantity, 
-  HeaderContainer, 
-  MenuSideBar, 
-  OpenSideBar, } 
-from '@/styles/components/header';
+import {HeaderContainer} from '@/styles/components/header';
 
 import logoImg from '../../assests/logo.svg';
-import handBag from '../../assests/handBagHeader.svg'
 import { SideBar } from '../sidebar';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function isNull(value: any) {
   if(value != null){
@@ -23,17 +18,15 @@ function isNull(value: any) {
 export function Header() {
   return(
     <HeaderContainer>
-      <Image src={logoImg} alt="" />
-      <ContainerHandBag>
-        <label>
-          <OpenSideBar type='checkbox'/>
-          <Image src={handBag} alt="" />
-          {/* <MenuSideBar id='sideBarMenu'>
-          </MenuSideBar> */}
-          <SideBar/>
-        </label>
-        <ContainerQuantity>{isNull('')}</ContainerQuantity>
-      </ContainerHandBag>
+      <Link href='/'>
+        <Image src={logoImg} alt="" />
+      </Link>
+      
+      <SideBar />
+      {/* <ContainerHandBag> */}
+        {/* <SideBar /> */}
+        {/* <ContainerQuantity>{isNull('')}</ContainerQuantity>
+      </ContainerHandBag> */}
     </HeaderContainer>
   )
 }
