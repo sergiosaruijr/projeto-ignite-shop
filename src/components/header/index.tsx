@@ -7,13 +7,13 @@ import { SideBar } from '../sidebar';
 import Image from 'next/image';
 import Link from 'next/link';
 
-function isNull(value: any) {
-  if(value != null){
-    return value
-  }else{
-    return null
-  }
-}
+// function isNull(value: any) {
+//   if(value != null){
+//     return value
+//   }else{
+//     return null
+//   }
+// }
 
 export function Header() {
   return(
@@ -21,12 +21,7 @@ export function Header() {
       <Link href='/'>
         <Image src={logoImg} alt="" />
       </Link>
-      
       <SideBar />
-      {/* <ContainerHandBag> */}
-        {/* <SideBar /> */}
-        {/* <ContainerQuantity>{isNull('')}</ContainerQuantity>
-      </ContainerHandBag> */}
     </HeaderContainer>
   )
 }

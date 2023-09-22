@@ -47,7 +47,7 @@ export default function Home({products}: HomeProps) {
     }
   })
 
-  const { addToHandBag} = useHandBag()
+  const { addToHandBag, checkIfItemAlreadyExists} = useHandBag()
 
   function handleAddToHandBag(e: MouseEvent<HTMLButtonElement>, product: ProductProps){
     e.preventDefault();
@@ -126,7 +126,10 @@ export default function Home({products}: HomeProps) {
                     <strong>{product.name} </strong>
                     <span>{product.price}</span>
                   </div>
-                  <button onClick={(e) => handleAddToHandBag(e, product)}>
+                  <button 
+                  onClick={(e) => handleAddToHandBag(e, product)}
+                  disabled = {checkIfItemAlreadyExists(product.id)}
+                  >
                     <ContainerIconBag>
                       <Image src={handBag} alt="" />
                     </ContainerIconBag>
@@ -161,6 +164,9 @@ export const getStaticProps: GetStaticProps = async () => {
         style: 'currency',
         currency: 'BRL',
       }).format(price.unit_amount as number/100),
+      numberPrice: price.unit_amount as number / 100,
+      defaultPriceId: price.id,
+
     }
   })
 

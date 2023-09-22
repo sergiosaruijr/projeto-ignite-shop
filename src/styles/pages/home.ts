@@ -68,6 +68,7 @@ export const Product = styled(Link, {
       border: 0,
       borderRadius: 6,
       color: '$green300',
+      cursor: 'pointer',
     }
     
   },

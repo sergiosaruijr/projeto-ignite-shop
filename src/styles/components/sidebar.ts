@@ -23,8 +23,17 @@ export const ContainerContent = styled('div',{
   flexDirection: 'column',
   margin: '1.5rem 3rem 3rem',
   
-  strong: {
+  h2: {
     fontSize: 20,
+    marginBottom: '2rem',
+  },
+
+  '> section': {
+    display: 'flex',
+    flexDirection: 'column',
+    gap:'1.5rem',
+    flex: 1,
+    overflowY: 'auto',
   }
 })
 
@@ -35,21 +44,6 @@ export const ContainerCloseSideBar = styled(Dialog.Close, {
   color: '$gray500',
 })
 
-// export const ContainerCloseSideBar = styled(Dialog.Close, {
-//   display: 'flex',
-//   paddingBottom: '1.5rem',
-
-//   input: {
-//     cursor: 'pointer',
-//     display: 'none',
-//     boxSizing: 'border-box',
-//     transition: 'all 0.3s',
-
-//     '&:checked ~ #sideBarMenu': {
-//       transform: 'translateX(0)',
-//     },
-//   }
-// })
 
 export const ContainerCardItem = styled('div', {
   display: 'flex',
@@ -106,6 +100,10 @@ export const HandBagFooter = styled('div', {
   display: 'flex', 
   flexDirection: 'column',
   marginTop: 'auto',
+  position: 'fixed',
+  // height: '100%',
+  bottom:'3rem',
+  width: '24rem',
   
   button: {
     width: '100%',
@@ -127,9 +125,12 @@ export const ContainerValues = styled('div', {
   display: 'grid',
   gridTemplateColumns: 'repeat(2, 1fr)',
   height: 93,
-  background: '$green300',
-  marginTop: '10.75rem',
+  marginBottom: '3.5rem',
   alignItems: 'center',
+
+  strong: {
+    fontSize: 18,
+  },
 
   'p:nth-child(2)' : {
     gridColumnEnd: 5,

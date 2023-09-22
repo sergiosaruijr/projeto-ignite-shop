@@ -17,8 +17,13 @@ import {X} from 'phosphor-react'
 import { HandBagButton } from '../handBagButton';
 
 export function SideBar() {
-  const { handBagItems } = useHandBag();
+  const { handBagItems, removeHandBagItem, handBagTotal } = useHandBag();
   const HandBagQuantity = handBagItems.length;
+
+  const formattedHandBagTotal = new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
+  }).format(handBagTotal);
 
   return(
     <Dialog.Root>
@@ -32,7 +37,7 @@ export function SideBar() {
             <ContainerCloseSideBar>
               <X size={24} weight='bold'/>
             </ContainerCloseSideBar>
-            <strong>Sacola de Compras</strong>
+            <h2>Sacola de Compras</h2>
             
             <section>
               {HandBagQuantity <= 0 && <p>Parece que seu carrinho esta vazio</p>}
@@ -46,19 +51,19 @@ export function SideBar() {
                     <DataItens>
                       <p>{handBagItems.name}</p>
                       <strong>{handBagItems.price}</strong>
-                      <button onClick={() => console.log('remove')}>Remover</button>
+                      <button onClick={() => removeHandBagItem(handBagItems.id)}>Remover</button>
                     </DataItens>
                   </ContainerCardItem>
                   
                 </>
               ))}
               <HandBagFooter>
-                {/* <ContainerValues>
+                <ContainerValues>
                     <p>Quantidade</p>
-                    <p>{HandBagQuantity} {HandBagQuantity > 1 ? 'itens' : 'item'}</p>
+                    <p>{HandBagQuantity} {HandBagQuantity === 1 ? 'item' : 'itens'}</p>
                     <strong>Total</strong>
-                    <strong>R$ 70,00</strong>
-                </ContainerValues> */}
+                    <strong>{formattedHandBagTotal}</strong>
+                </ContainerValues>
 
                 <button> Finalizar compra </button>
               </HandBagFooter>

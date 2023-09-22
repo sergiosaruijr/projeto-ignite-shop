@@ -13,8 +13,10 @@ export interface ProductProps {
 
 interface HandBagContextData{
   handBagItems: ProductProps[];
+  handBagTotal: number;
   addToHandBag: (product: ProductProps) => void;
   checkIfItemAlreadyExists: (productId: string) => boolean;
+  removeHandBagItem: (productId: string) => void;
 }
 
 export type HandBagContextProviderProps = {
@@ -27,8 +29,16 @@ export const HandBagContext = createContext({} as HandBagContextData)
 export function HandBagContextProvider({children}: HandBagContextProviderProps){
   const [ handBagItems, setHandBagItems] = useState<ProductProps[]>([]);
   
+  const handBagTotal = handBagItems.reduce((total, product) => {
+    return total + product.numberPrice
+  }, 0)
+
   function addToHandBag(product: ProductProps){
     setHandBagItems((state) => [...state, product])
+  }
+
+  function removeHandBagItem(productId: string){
+    setHandBagItems((state) => state.filter((item) => item.id !== productId))
   }
 
   function checkIfItemAlreadyExists(productId: string){
@@ -36,7 +46,13 @@ export function HandBagContextProvider({children}: HandBagContextProviderProps){
   }
 
   return(
-    <HandBagContext.Provider value={{handBagItems, addToHandBag, checkIfItemAlreadyExists}}>
+    <HandBagContext.Provider value={{
+      handBagItems,
+      handBagTotal,
+      addToHandBag, 
+      removeHandBagItem, 
+      checkIfItemAlreadyExists,
+      }}>
       {children}
     </HandBagContext.Provider>
   )
