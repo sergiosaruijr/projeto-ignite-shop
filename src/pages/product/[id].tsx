@@ -1,14 +1,12 @@
 
 import { stripe } from '@/lib/stripe'
 import { ImageContainer, ProductContainer, ProductDetails } from '@/styles/pages/product'
-import axios from 'axios'
 import { GetStaticPaths, GetStaticProps } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { ReactNode, useContext, useState } from 'react'
 import Stripe from 'stripe'
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import 'react-loading-skeleton/dist/skeleton.css'
 import { ProductProps } from '../../context/HandBagContext'
 import { useHandBag } from '@/hooks/useHandBag'
@@ -18,36 +16,7 @@ interface ProductItemProps {
   product: ProductProps;
 }
 
-const SkeletonComponent = () => (
-  <SkeletonTheme highlightColor="#d5d4d4" baseColor='#fff'>
-    <section>
-      <Skeleton height={500} width={500} />
-    </section>
-  </SkeletonTheme>
-);
-
 export default function Product({product}: ProductItemProps) {
-  const [isCreatinCheckoutSession , setIsCreatinCheckoutSession] = useState(false)
-
-  // const {add} = useContext(HandBagContext)
-
-  // function addToHandBag({product}: ProductProps){
-  //   if(add) {
-  //     add(product.price)
-  //   }
-  // }
-  // const addToHandBag = (product: ProductProps) => {
-  //   if(add) {
-  //     add(product)
-  //   }
-  // }
-
-  // const addToHandBag = (p: Stripe.Price) => {
-  //   if(add) {
-  //     add(p)
-  //   }
-  // }
-
   const router = useRouter()
 
   const { checkIfItemAlreadyExists, addToHandBag } = useHandBag()
@@ -60,28 +29,6 @@ export default function Product({product}: ProductItemProps) {
   }
 
   const itemAlreadyInHandBag = checkIfItemAlreadyExists(product.id)
-  // return  SkeletonComponent()
-
-  // async function handleBuyProduct(){
-  //   try{
-  //     setIsCreatinCheckoutSession(true);
-
-  //     const response = await axios.post('/api/checkout', {
-  //       priceId: product.defaultPriceId,
-  //     })
-
-  //     const { checkoutUrl } = response.data;
-
-  //     window.location.href = checkoutUrl
-  //   }catch (err) {
-  //     //Conectar com alguma ferramenta de observidade (Datadog / Sentry)
-  //     setIsCreatinCheckoutSession(false);
-
-  //     alert('Falha ao redicionar ao checkout');
-  //   }
-  // }
-
-  
 
   return(
     <>
@@ -100,22 +47,12 @@ export default function Product({product}: ProductItemProps) {
 
           <p>{product.description}</p>
 
-          {/* envia para o stripe: */}
-          {/* <button disabled={isCreatinCheckoutSession} onClick={handleBuyProduct}>
-            Comprar agora
-          </button> */}
-
-          {/* arrumar addHandBag */}
-          {/* <button 
-            disabled={isCreatinCheckoutSession} 
-            onClick={() => addToHandBag(product.price)}>
-            Comprar agora
-          </button> */}
           <button
-          disabled= {itemAlreadyInHandBag}
-          onClick={() => addToHandBag(product)}
+            disabled= {itemAlreadyInHandBag}
+            onClick={() => addToHandBag(product)}
           >
-            {itemAlreadyInHandBag ? 'Produto já está adicionado'
+            {itemAlreadyInHandBag 
+            ? 'Produto já está adicionado'
             : 'Colocar na sacola'}
           </button>
 
@@ -163,6 +100,6 @@ export const getStaticProps: GetStaticProps<any, { id: string }> = async ({param
   }
 } 
 
-function useCart() {
-  throw new Error('Function not implemented.')
-}
+// function useCart() {
+//   throw new Error('Function not implemented.')
+// }

@@ -7,25 +7,24 @@ export const HomeContainer = styled('main', {
   display: 'flex',
   gap: '3rem',
   // width: '100%',
-  width: 696,
-  height: 656,
+  // width: 696,
+  // height: 656,
   maxWidth: 'calc(100vw - ((100vw - 1180px)/2))',
   marginLeft: 'auto',
   minHeight: 656,
 })
 
+
 export const Product = styled(Link, {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-
+  
   background: 'linear-gradient(180deg, #1ea483 0%, #7465d4 100%)',
   borderRadius: 8,
-  // padding: '0.25rem',
   cursor: 'pointer',
   position: 'relative',
   overflow: 'hidden',
-
   div: {
     display: 'flex',
     flexDirection: 'column',
@@ -67,8 +66,14 @@ export const Product = styled(Link, {
     button: {
       border: 0,
       borderRadius: 6,
-      color: '$green300',
       cursor: 'pointer',
+      background: '$green500',
+      color: '$white',
+
+      '&:hover' : {
+        background: '$green300',
+      }
+
     }
     
   },
@@ -77,6 +82,7 @@ export const Product = styled(Link, {
     footer: {
       transform: 'translateY(0%)',
       opacity: 1,
+      borderRadius: 6,
     }
 
   }
@@ -93,7 +99,5 @@ export const SkeletonFooter = styled('section', {
   display: 'flex',
   justifyContent: 'space-between',
   marginTop: 24,
-  // background: '$green300',
   width: 600,
-  // height: 500,
 })

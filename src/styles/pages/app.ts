@@ -43,25 +43,4 @@ export const ContainerQuantity = styled('div', {
   marginRight: -5,
 })
 
-export const MenuSideBar = styled('div', {
-  height: '100%',
-  position: 'fixed',
-  right: 0,
-  width: '480px',
-  border: 'none',
-  transform: 'translateX(480px)',
-  transition: 'transform 250ms ease-in-out',
-  background: 'linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);'
-})
-
-export const OpenSideBar = styled('input', {
-  cursor: 'pointer',
-  display: 'none',
-  boxSizing: 'border-box',
-  transition: 'all 0.3s',
-
-  '&:checked ~ #sideBarMenu': {
-    transform: 'translateX(0)',
-  },
-})
 

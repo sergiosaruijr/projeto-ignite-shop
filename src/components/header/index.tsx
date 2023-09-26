@@ -6,22 +6,19 @@ import logoImg from '../../assests/logo.svg';
 import { SideBar } from '../sidebar';
 import Image from 'next/image';
 import Link from 'next/link';
-
-// function isNull(value: any) {
-//   if(value != null){
-//     return value
-//   }else{
-//     return null
-//   }
-// }
+import { useRouter } from 'next/router';
 
 export function Header() {
+  const {pathname} = useRouter();
+
+  const showHandBagButton = pathname !== '/success';
+
   return(
     <HeaderContainer>
       <Link href='/'>
         <Image src={logoImg} alt="" />
       </Link>
-      <SideBar />
+      {showHandBagButton && <SideBar />}
     </HeaderContainer>
   )
 }

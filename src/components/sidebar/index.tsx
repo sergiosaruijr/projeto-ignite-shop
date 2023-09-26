@@ -15,6 +15,8 @@ import { useHandBag } from '@/hooks/useHandBag';
 import * as Dialog from '@radix-ui/react-dialog';
 import {X} from 'phosphor-react'
 import { HandBagButton } from '../handBagButton';
+import { useState } from 'react';
+import axios from 'axios';
 
 export function SideBar() {
   const { handBagItems, removeHandBagItem, handBagTotal } = useHandBag();
@@ -25,10 +27,31 @@ export function SideBar() {
     currency: 'BRL',
   }).format(handBagTotal);
 
+  const [isCreatingCheckoutSession, setIsCreatingCheckoutSession] = 
+  useState(false);
+
+  async function handleCheckout() {
+    try {
+      setIsCreatingCheckoutSession(true);
+
+      const response = await axios.post('/api/checkout', {
+        products: handBagItems,
+      });
+
+      const { checkoutUrl } = response.data;
+
+      window.location.href = checkoutUrl;
+    } catch (err) {
+      setIsCreatingCheckoutSession(false);
+      alert("Falha ao redirecionar ao checkout");
+    }
+  }
+
+
   return(
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <HandBagButton />
+        <HandBagButton quantity={HandBagQuantity}/>
       </Dialog.Trigger>
 
       <Dialog.Portal>
@@ -65,7 +88,12 @@ export function SideBar() {
                     <strong>{formattedHandBagTotal}</strong>
                 </ContainerValues>
 
-                <button> Finalizar compra </button>
+                <button
+                  onClick={handleCheckout}
+                  disabled= {isCreatingCheckoutSession || HandBagQuantity <= 0}
+                > 
+                  Finalizar compra 
+                </button>
               </HandBagFooter>
             </section>
             
@@ -75,44 +103,3 @@ export function SideBar() {
     </Dialog.Root>
   )
 }
-
-// antes do teste com dialog
-
-// <MenuSideBar id='sideBarMenu'> 
-//         <ContainerContent>
-//           <ContainerCloseSideBar>
-//             <input type='checkbox'/>
-//             x
-//           </ContainerCloseSideBar>
-//           <strong>Sacola de Compras</strong>
-
-//           {HandBagQuantity <= 0 && <p>Parece que seu carrinho esta vazio</p>}
-
-//           {handBagItems.map((handBagItems) =>(
-//             <>
-//               <ContainerCardItem key={handBagItems.id}>
-//                 <ContainerImg>
-//                   <Image src={handBagItems.imageUrl} width={94.8} height={94.8} alt='' />
-//                 </ContainerImg>
-//                 <DataItens>
-//                   <p>{handBagItems.name}x</p>
-//                   <strong>{handBagItems.price}</strong>
-//                   <span>Remover</span>
-//                   <button onClick={() => console.log('remove')}>Remover</button>
-//                 </DataItens>
-//               </ContainerCardItem>
-              
-//             </>
-//         ))}
-//           <HandBagFooter>
-//             {/* <ContainerValues>
-//                 <p>Quantidade</p>
-//                 <p>{HandBagQuantity} {HandBagQuantity > 1 ? 'itens' : 'item'}</p>
-//                 <strong>Total</strong>
-//                 <strong>R$ 70,00</strong>
-//             </ContainerValues> */}
-        
-//             <button> Finalizar compra </button>
-//           </HandBagFooter>
-//         </ContainerContent>
-//       </MenuSideBar>
