@@ -1,12 +1,19 @@
-<<<<<<< HEAD
-# projeto-ignite-shop
+# Projeto-ignite-shop
 Aplicação de venda de camisetas, utilizando Next.js | Stitches
-=======
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Imagem do Sistema
+<div align="center">
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/d3746965-b6a3-46b6-a352-edaf78ffcfc6.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/7e4dc2df-05ef-401d-b23f-95fd3d7c6aec.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/22573651-45b1-484e-ab26-4905abac52ca.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/c1df362e-977b-48c9-9f00-973a742b6958.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/4a5cb5e9-f510-4875-8658-c571560c9d4b.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/2980bfff-dff9-4d98-91e3-bc2a0752c4bd.PNG" width="800px"/>
+  <img src="https://github.com/sergiosaruijr/projeto-ignite-shop/assets/54729444/f6c8453e-17f7-4e2f-8f98-70e1b7c7948d.PNG" width="800px"/>
+</div>
 
-First, run the development server:
+## Inicializar
+Para iniciar:
 
 ```bash
 npm run dev
@@ -16,28 +23,4 @@ yarn dev
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
->>>>>>> 8242739 (Initial commit from Create Next App)
+Abrir [http://localhost:3000](http://localhost:3000) com seu browser para visualizar.
